@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="item.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="modifyContainer"> 
+            <img src="/{{item.imgFilePath}}/{{item.filename}}">
+            <form class="modify_box" method="post" action="modify?currentPageNo={{currentPageNo}}" enctype="multipart/form-data">
+                <input id="itemNumber" name="itemNumber" type="hidden" value="{{item.itemNumber}}">
+                <label for="itemtype">타입</label>
+                <input id="itemtype" name="itemtype" type="text" value="{{item.itemtype}}">
+                <label for="uploadImg">수정 이미지</label>
+                <input id="uploadImg" name="uploadImg" type="file" accept="image/*">
+                <label for="itemName">제품명</label>
+                <input id="itemName" name="itemName" type="text" value="{{item.itemname}}">
+                <label for="value">가격</label>
+                <input id="value" name="value" type="number" value="{{item.value}}">
+                <label for="size">사이즈</label>
+                <input id="size" name="size" type="text" value="{{item.size}}">
+                <label for="color">색깔</label>
+                <input id="color" name="color" type="text" value="{{item.colors}}">
+                <input type="submit" class="addsubmit" value="제출"></input>
+            </form>
+    </div>
+</body>
+</html>
