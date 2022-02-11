@@ -14,14 +14,14 @@
         <div class="nav_box">
             <a class="main_logo" href="list"><img src="/img/main_logo.png"></a>
             <div class="navbar">
-                <button class="clothes" ><a href="list?type=all">전체</a></button>
-                <button class="clothes" ><a href="list?type=outer">아우터</a></button>
-                <button class="clothes" ><a href="list?type=onepiece">원피스</a></button>
-                <button class="clothes" ><a href="list?type=top">상의</a></button>
-                <button class="clothes" ><a href="list?type=knit">니트</a></button>
-                <button class="clothes" ><a href="list?type=bottom">하의</a></button>
-                <button class="clothes" ><a href="list?type=fitness">피트니스</a></button>
-                <button class="clothes" ><a href="list?type=homewear">홈웨어</a></button>
+                <button class="clothes"><a href="list?type=all">전체</a></button>
+                <button class="clothes"><a href="list?type=outer">아우터</a></button>
+                <button class="clothes"><a href="list?type=onepiece">원피스</a></button>
+                <button class="clothes"><a href="list?type=top">상의</a></button>
+                <button class="clothes"><a href="list?type=knit">니트</a></button>
+                <button class="clothes"><a href="list?type=bottom">하의</a></button>
+                <button class="clothes"><a href="list?type=fitness">피트니스</a></button>
+                <button class="clothes"><a href="list?type=homewear">홈웨어</a></button>
             </div>
             <div class="addButton">
                 <button class="add"><a href="add">추가</a></button>
@@ -33,10 +33,12 @@
             <div class="item item{{item.itemNumber}}">
                 {{item.itemtype}} {{item.itemname}} {{item.value}} {{item.size}} {{item.color}}
                 <div class="item_change">
-                    <button class="modify"><a href="./modify?itemNumber={{item.itemNumber}}&type={{item.itemtype}}&currentPageNo={{pagination.currentPageNo}}">수정</a></button>
-                    <button class="delete"><a href="./delete?itemNumber={{item.itemNumber}}&type={{item.itemtype}}&currentPageNo={{pagination.currentPageNo}}">삭제</a></button>
+                    <button class="modify"><a
+                            href="./modify?itemNumber={{item.itemNumber}}&type={{item.itemtype}}&currentPageNo={{pagination.currentPageNo}}">수정</a></button>
+                    <button class="delete"><a
+                            href="./delete?itemNumber={{item.itemNumber}}&type={{item.itemtype}}&currentPageNo={{pagination.currentPageNo}}">삭제</a></button>
                 </div>
-            </div> 
+            </div>
             {% else %}
             <div class="item">데이터가 없습니다.</div>
             {% endfor %}
@@ -48,17 +50,18 @@
             {% endif %}
 
             {% for i in range(pagination.firstPageNoOnPageList, pagination.lastPageNoOnPageList + 1) -%}
-                {% if pagination.currentPageNo == i %}
-                <div>{{ i }}</div>
-                {% else %}
-                <div><a href="list?currentPageNo={{i}}&type={{type}}">{{ i }}</a></div>
-                {% endif %}
-            {%- endfor%}
-            
-            {% if pagination.lastPageNoOnPageList + 1 <= pagination.totalPageCount %}
-            <div><a href="list?currentPageNo={{pagination.lastPageNoOnPageList + 1}}&type={{type}}"> &gt; </a></div>
+            {% if pagination.currentPageNo == i %}
+            <div>{{ i }}</div>
+            {% else %}
+            <div><a href="list?currentPageNo={{i}}&type={{type}}">{{ i }}</a></div>
             {% endif %}
+            {%- endfor%}
+
+            {% if pagination.lastPageNoOnPageList + 1 <= pagination.totalPageCount %} <div><a
+                    href="list?currentPageNo={{pagination.lastPageNoOnPageList + 1}}&type={{type}}"> &gt; </a>
         </div>
+        {% endif %}
+    </div>
 
     </div>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>

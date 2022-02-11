@@ -89,11 +89,12 @@ a {
   margin: 0;
 }
 
-.item > .change {
+.item > .item_change {
   width: 10%;
+  margin-left: 10px;
 }
 
-.change > .modify,
+.modify,
 .delete {
   font-size: 20px;
 }

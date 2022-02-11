@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>main_page</title>
+    <link href="main.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="nav_box">
+            <div class="login_box">
+                <div class="login"><a href="/login.html">{{user_id}}</a></div>
+                <div class="sign_up"><a href="/signup.html">회원가입</a></div>
+            </div>
+            <a class="main_logo" href="/item/index"><img src="/img/main_logo.png"></a>
+            <div class="nav_bar">
+                <a href="index?type=outer">아우터</a>
+                <a href="index?type=onepiece">원피스</a>
+                <a href="index?type=top">상의</a>
+                <a href="index?type=knit">니트</a>
+                <a href="index?type=bottom">하의</a>
+                <a href="index?type=fitness">피트니스</a>
+                <a href="index?type=homewear">홈웨어</a>
+            </div>
+        </div>
+
+        <div class="main_box">
+            {% for product in products %}
+            <div class="product product{{product.itemNumber}}">
+                <div class="img_item">
+                    <img src="/{{product.imgFilePath}}/{{product.filename}}">
+                    <div class="overlay">
+                        <img src="/img/heart.png" class="p_img heart">
+                        <img src="/img/cart.png" class="p_img cart">
+                        <img src="/img/search.png" class="p_img search">
+                    </div>
+                </div>
+                <div class="productname">{{product.itemname}}</div>
+                <div class="value">{{product.value}}</div>
+                <div class="size">{{product.size}}</div>
+                <div class="color">{{product.colors}}</div>
+            </div>
+            {% else %}
+            <div class="item">데이터가 없습니다.</div>
+            {% endfor %}
+        </div>
+
+        <div class="pagination">
+            {% if pagination.firstPageNoOnPageList - 1 > 0 %}
+            <div><a href="list?currentPageNo={{pagination.firstPageNoOnPageList - 1}}&type={{type}}"> &lt; </a></div>
+            {% endif %}
+
+            {% for i in range(pagination.firstPageNoOnPageList, pagination.lastPageNoOnPageList + 1) -%}
+            {% if pagination.currentPageNo == i %}
+            <div>{{ i }}</div>
+            {% else %}
+            <div><a href="list?currentPageNo={{i}}&type={{type}}">{{ i }}</a></div>
+            {% endif %}
+            {%- endfor %}
+
+            {% if pagination.lastPageNoOnPageList + 1 <= pagination.totalPageCount %} <div><a
+                    href="list?currentPageNo={{pagination.lastPageNoOnPageList + 1}}&type={{type}}"> &gt; </a>
+        </div>
+        {% endif %}
+    </div>
+    </div>
+</body>
+
+</html>

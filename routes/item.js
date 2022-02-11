@@ -69,9 +69,8 @@ router.use('/list',(req, res, next) => {
       
       next();
     }
+  
   })
-
-
 })
 
 router.get('/list', (req, res) => {

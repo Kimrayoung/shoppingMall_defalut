@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const userRouter = require('./routes/user');
 const itemRouter = require('./routes/item');
+const mainRouter = require('./routes/main')
 const bodyParser = require('body-parser');
 const nunjucks = require('nunjucks');
 
@@ -21,6 +22,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'dataFile')));
 app.use('/user', userRouter);
 app.use('/item', itemRouter);
+app.use('/main', mainRouter);
 
 app.use((err, req, res, next) => {
   res.locals.message = err.message;
